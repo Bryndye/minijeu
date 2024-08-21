@@ -26,6 +26,7 @@ public class Event_card : MonoBehaviour
     private Manager _manager;
     private CardId _cardId;
     [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private SpriteRenderer _spriteCadreDiscovered;
     
     // Start is called before the first frame update
     void Awake()
@@ -63,7 +64,7 @@ public class Event_card : MonoBehaviour
             return;
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !_manager.IsUsingCards)
         {
             Vector3 mousePosition = _cam.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0; // Ensure the z-coordinate is zero for 2D
@@ -78,6 +79,7 @@ public class Event_card : MonoBehaviour
                 else
                 {
                     SetCardState(CardState.FaceDown);
+                    _manager?.ResetCard(_cardId);
                 }
             }
         }
@@ -111,9 +113,11 @@ public class Event_card : MonoBehaviour
         {
             case CardDiscovered.Discovered:
                 Debug.Log("Card is discovered");
+                _spriteCadreDiscovered.enabled = true;
                 break;
             case CardDiscovered.NotDiscovered:
                 Debug.Log("Card is not discovered");
+                _spriteCadreDiscovered.enabled = false;
                 break;
         }
     }
@@ -142,10 +146,12 @@ public class Event_card : MonoBehaviour
         if (_cardState == CardState.FaceDown)
         {
             _spriteRenderer.sprite = _cardId.backSprite;
+            _spriteRenderer.flipX = false;
         }
         else
         {
             _spriteRenderer.sprite = _cardId.frontSprite;
+            _spriteRenderer.flipX = true;
         }
     }
 }

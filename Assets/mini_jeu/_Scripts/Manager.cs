@@ -14,6 +14,10 @@ public class Manager : MonoBehaviour
     public Action OnSameCards;
     public Action OnDifferentCards;
 
+    public bool IsUsingCards {  get; private set; }
+
+    [SerializeField] private GameObject VictoryArea;
+
     private void Awake()
     {
         // Init Singleton
@@ -52,7 +56,8 @@ public class Manager : MonoBehaviour
 
         if (CardsReturned.Count >= 2)
         {
-            // verif id card
+            IsUsingCards = true;
+            
             if (CardsReturned[0].Cardid == CardsReturned[1].Cardid)
             {
                 // same cards
@@ -61,6 +66,7 @@ public class Manager : MonoBehaviour
                 {
                     item.MyEventCard.SetCardDiscovered(Event_card.CardDiscovered.Discovered);
                 }
+                IsUsingCards = false;
                 CardsReturned.Clear();
             }
             else
@@ -76,6 +82,14 @@ public class Manager : MonoBehaviour
         VictoryCondition();
     }
 
+    public void ResetCard(CardId _cardId)
+    {
+        if (CardsReturned.Contains(_cardId))
+        {
+            CardsReturned.Remove(_cardId);
+        }
+    }
+
     private void ResetCardBack()
     {
         foreach (var card in CardsReturned)
@@ -83,6 +97,7 @@ public class Manager : MonoBehaviour
             card.MyEventCard.SetCardState(Event_card.CardState.FaceDown);
         }
         CardsReturned.Clear();
+        IsUsingCards = false;
     }
 
     public void RemovePairCards()
@@ -99,7 +114,7 @@ public class Manager : MonoBehaviour
         if (CardIds.Count <= 0)
         {
             // Victory
-            // Animation end game
+            VictoryArea.SetActive(true);
         }
     }
 
