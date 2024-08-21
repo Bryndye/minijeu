@@ -21,6 +21,7 @@ public class Event_card : MonoBehaviour
     private Collider2D _cardCollider;
     private CardState _cardState;
     private Animator _cardAnimator;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     
     // Start is called before the first frame update
     void Start()
@@ -109,6 +110,20 @@ public class Event_card : MonoBehaviour
             case CardState.FaceDown:
                 Debug.Log("Card is face down");
                 break;
+        }
+    }
+    
+    //Change color of the card
+    public void ChangeColor()
+    {
+        //Depending on state of the card, change the color
+        if (_cardState == CardState.FaceDown)
+        {
+            spriteRenderer.color = Color.red;
+        }
+        else
+        {
+            spriteRenderer.color = Color.blue;
         }
     }
 }
