@@ -24,6 +24,7 @@ public class Event_card : MonoBehaviour
     private Animator _cardAnimator;
     private Manager manager;
     private CardId _cardId;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     
     // Start is called before the first frame update
     void Awake()
@@ -121,6 +122,20 @@ public class Event_card : MonoBehaviour
             case CardState.FaceDown:
                 Debug.Log("Card is face down");
                 break;
+        }
+    }
+    
+    //Change color of the card
+    public void ChangeColor()
+    {
+        //Depending on state of the card, change the color
+        if (_cardState == CardState.FaceDown)
+        {
+            spriteRenderer.color = Color.red;
+        }
+        else
+        {
+            spriteRenderer.color = Color.blue;
         }
     }
 }
