@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent (typeof(Collider2D), typeof(CardId))]
 public class Event_card : MonoBehaviour
 {
     //Enum to represent the state of the card (face up or face down)
@@ -21,14 +22,24 @@ public class Event_card : MonoBehaviour
     private Collider2D _cardCollider;
     private CardState _cardState;
     private Animator _cardAnimator;
+    private Manager manager;
+    private CardId _cardId;
     
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _cam = Camera.main;   
         _cardCollider = GetComponent<Collider2D>();
         _cardAnimator = GetComponent<Animator>();
+        _cardId = GetComponent<CardId>();
         _cardState = CardState.FaceDown;
+    }
+
+    private void Start()
+    {
+        manager = Manager.Instance;
+
+
     }
 
     // Update is called once per frame
@@ -53,12 +64,12 @@ public class Event_card : MonoBehaviour
                 //Edit state of the card
                 if (_cardState == CardState.FaceDown)
                 {
-                    _cardAnimator.SetTrigger("on_click_selected");
+                    _cardAnimator?.SetTrigger("on_click_selected");
                     SetCardState(CardState.FaceUp);
                 }
                 else
                 {
-                    _cardAnimator.SetTrigger("on_click_unselected");
+                    _cardAnimator?.SetTrigger("on_click_unselected");
                     SetCardState(CardState.FaceDown);
                 }
             }
@@ -105,6 +116,7 @@ public class Event_card : MonoBehaviour
         {
             case CardState.FaceUp:
                 Debug.Log("Card is face up");
+                manager?.ReturnCard(_cardId);
                 break;
             case CardState.FaceDown:
                 Debug.Log("Card is face down");

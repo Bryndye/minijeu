@@ -21,6 +21,7 @@ public class Manager : MonoBehaviour
 
 
         OnSameCards += RemovePairCards;
+        OnSameCards += DebugSameCards;
     }
 
     #region List Cards
@@ -79,5 +80,15 @@ public class Manager : MonoBehaviour
         {
             // Victory
         }
+    }
+
+    private void DebugSameCards()
+    {
+        Debug.Log("Same cards");
+    }
+
+    private void DebugDiffCards()
+    {
+        Debug.Log("Different cards");
     }
 }
