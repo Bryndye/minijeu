@@ -62,10 +62,12 @@ public class Manager : MonoBehaviour
             {
                 // different cards
                 OnDifferentCards?.Invoke();
+            // Rm cards from the game
             }
 
 
             // End interaction -> reset init pos OR rm same cards
+
             foreach (var card in CardsReturned)
             {
                 card.MyEventCard.SetCardState(Event_card.CardState.FaceDown);

@@ -33,14 +33,14 @@ public class Event_card : MonoBehaviour
         _cardCollider = GetComponent<Collider2D>();
         _cardAnimator = GetComponent<Animator>();
         _cardId = GetComponent<CardId>();
-        _cardState = CardState.FaceDown;
+        
+        ChangeColor();
+        SetCardState(CardState.FaceDown);
     }
 
     private void Start()
     {
         manager = Manager.Instance;
-
-
     }
 
     // Update is called once per frame
@@ -131,11 +131,11 @@ public class Event_card : MonoBehaviour
         //Depending on state of the card, change the color
         if (_cardState == CardState.FaceDown)
         {
-            spriteRenderer.color = Color.red;
+            spriteRenderer.sprite = _cardId.backSprite;
         }
         else
         {
-            spriteRenderer.color = Color.blue;
+            spriteRenderer.sprite = _cardId.frontSprite;
         }
     }
 }

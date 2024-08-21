@@ -11,6 +11,12 @@ public class CardId : MonoBehaviour
     private Event_card myEventCard;
     public Event_card MyEventCard { get { return myEventCard; } }
 
+    public Sprite frontSprite;
+    public Sprite backSprite;
+
+    //public Color frontColor;
+    //public Color backColor;
+
     private void Awake()
     {
         myEventCard = GetComponent<Event_card>();
