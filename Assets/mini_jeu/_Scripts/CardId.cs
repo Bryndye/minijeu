@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CardId : MonoBehaviour
 {
-    private int _cardId;
+    [SerializeField] private int _cardId;
     public int Cardid { get { return _cardId; } }
 
 }

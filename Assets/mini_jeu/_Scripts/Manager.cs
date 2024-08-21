@@ -67,7 +67,7 @@ public class Manager : MonoBehaviour
 
     public void RemovePairCards()
     {
-        foreach (var _card in CardIds)
+        foreach (var _card in CardsReturned)
         {
             RemoveCard(_card);
         }
