@@ -21,10 +21,11 @@ public class Event_card : MonoBehaviour
     private Camera _cam;
     private Collider2D _cardCollider;
     private CardState _cardState;
+    private CardDiscovered _cardDiscovered;
     private Animator _cardAnimator;
-    private Manager manager;
+    private Manager _manager;
     private CardId _cardId;
-    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
     
     // Start is called before the first frame update
     void Awake()
@@ -36,11 +37,13 @@ public class Event_card : MonoBehaviour
         
         ChangeColor();
         SetCardState(CardState.FaceDown);
+
+        SetCardDiscovered(CardDiscovered.NotDiscovered);
     }
 
     private void Start()
     {
-        manager = Manager.Instance;
+        _manager = Manager.Instance;
     }
 
     // Update is called once per frame
@@ -55,6 +58,11 @@ public class Event_card : MonoBehaviour
 
     public void CheckClick()
     {
+        if (_cardDiscovered == CardDiscovered.Discovered)
+        {
+            return;
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 mousePosition = _cam.ScreenToWorldPoint(Input.mousePosition);
@@ -96,6 +104,8 @@ public class Event_card : MonoBehaviour
     //Create setter for the card discovered
     public void SetCardDiscovered(CardDiscovered discovered)
     {
+        _cardDiscovered = discovered;
+
         //Switch method to handle the state of the card
         switch (discovered)
         {
@@ -116,7 +126,7 @@ public class Event_card : MonoBehaviour
             case CardState.FaceUp:
                 Debug.Log("Card is face up");
                 _cardAnimator?.SetTrigger("on_click_selected");
-                manager?.ReturnCard(_cardId);
+                _manager?.ReturnCard(_cardId);
                 break;
             case CardState.FaceDown:
                 Debug.Log("Card is face down");
@@ -131,11 +141,11 @@ public class Event_card : MonoBehaviour
         //Depending on state of the card, change the color
         if (_cardState == CardState.FaceDown)
         {
-            spriteRenderer.sprite = _cardId.backSprite;
+            _spriteRenderer.sprite = _cardId.backSprite;
         }
         else
         {
-            spriteRenderer.sprite = _cardId.frontSprite;
+            _spriteRenderer.sprite = _cardId.frontSprite;
         }
     }
 }

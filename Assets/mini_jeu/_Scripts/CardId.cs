@@ -14,9 +14,6 @@ public class CardId : MonoBehaviour
     public Sprite frontSprite;
     public Sprite backSprite;
 
-    //public Color frontColor;
-    //public Color backColor;
-
     private void Awake()
     {
         myEventCard = GetComponent<Event_card>();

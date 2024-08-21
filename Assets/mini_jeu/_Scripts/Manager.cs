@@ -57,26 +57,32 @@ public class Manager : MonoBehaviour
             {
                 // same cards
                 OnSameCards?.Invoke();
+                foreach (var item in CardsReturned)
+                {
+                    item.MyEventCard.SetCardDiscovered(Event_card.CardDiscovered.Discovered);
+                }
+                CardsReturned.Clear();
             }
             else
             {
                 // different cards
                 OnDifferentCards?.Invoke();
-            // Rm cards from the game
+                Invoke(nameof(ResetCardBack), 1.5f);
             }
-
 
             // End interaction -> reset init pos OR rm same cards
-
-            foreach (var card in CardsReturned)
-            {
-                card.MyEventCard.SetCardState(Event_card.CardState.FaceDown);
-            }
-
-            CardsReturned.Clear();
         }
 
         VictoryCondition();
+    }
+
+    private void ResetCardBack()
+    {
+        foreach (var card in CardsReturned)
+        {
+            card.MyEventCard.SetCardState(Event_card.CardState.FaceDown);
+        }
+        CardsReturned.Clear();
     }
 
     public void RemovePairCards()
