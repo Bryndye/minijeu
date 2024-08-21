@@ -20,12 +20,14 @@ public class Event_card : MonoBehaviour
     private Camera _cam;
     private Collider2D _cardCollider;
     private CardState _cardState;
-
+    private Animator _cardAnimator;
+    
     // Start is called before the first frame update
     void Start()
     {
         _cam = Camera.main;   
         _cardCollider = GetComponent<Collider2D>();
+        _cardAnimator = GetComponent<Animator>();
         _cardState = CardState.FaceDown;
     }
 
@@ -51,10 +53,12 @@ public class Event_card : MonoBehaviour
                 //Edit state of the card
                 if (_cardState == CardState.FaceDown)
                 {
+                    _cardAnimator.SetTrigger("on_click_selected");
                     SetCardState(CardState.FaceUp);
                 }
                 else
                 {
+                    _cardAnimator.SetTrigger("on_click_unselected");
                     SetCardState(CardState.FaceDown);
                 }
             }
