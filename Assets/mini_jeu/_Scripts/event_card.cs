@@ -65,12 +65,10 @@ public class Event_card : MonoBehaviour
                 //Edit state of the card
                 if (_cardState == CardState.FaceDown)
                 {
-                    _cardAnimator?.SetTrigger("on_click_selected");
                     SetCardState(CardState.FaceUp);
                 }
                 else
                 {
-                    _cardAnimator?.SetTrigger("on_click_unselected");
                     SetCardState(CardState.FaceDown);
                 }
             }
@@ -117,10 +115,12 @@ public class Event_card : MonoBehaviour
         {
             case CardState.FaceUp:
                 Debug.Log("Card is face up");
+                _cardAnimator?.SetTrigger("on_click_selected");
                 manager?.ReturnCard(_cardId);
                 break;
             case CardState.FaceDown:
                 Debug.Log("Card is face down");
+                _cardAnimator?.SetTrigger("on_click_unselected");
                 break;
         }
     }

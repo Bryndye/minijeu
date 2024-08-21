@@ -22,6 +22,7 @@ public class Manager : MonoBehaviour
 
         OnSameCards += RemovePairCards;
         OnSameCards += DebugSameCards;
+        OnDifferentCards += DebugDiffCards;
     }
 
     #region List Cards
@@ -62,7 +63,18 @@ public class Manager : MonoBehaviour
                 // different cards
                 OnDifferentCards?.Invoke();
             }
+
+
+            // End interaction -> reset init pos OR rm same cards
+            foreach (var card in CardsReturned)
+            {
+                card.MyEventCard.SetCardState(Event_card.CardState.FaceDown);
+            }
+
+            CardsReturned.Clear();
         }
+
+        VictoryCondition();
     }
 
     public void RemovePairCards()
@@ -79,6 +91,7 @@ public class Manager : MonoBehaviour
         if (CardIds.Count <= 0)
         {
             // Victory
+            // Animation end game
         }
     }
 
@@ -90,5 +103,6 @@ public class Manager : MonoBehaviour
     private void DebugDiffCards()
     {
         Debug.Log("Different cards");
+
     }
 }
