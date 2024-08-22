@@ -9,8 +9,9 @@ public class StepsManager : MonoBehaviour
     private Manager manager;
     
     public List<Step> steps = new List<Step>();
-    public Color activeColor = Color.green;  // Color when step is active
-    public Color inactiveColor = Color.gray;  // Color when step is inactive
+    public Color ActiveColor = Color.green;  // Color when step is active
+    public Color CurrentColor = Color.cyan;
+    public Color InactiveColor = Color.gray;  // Color when step is inactive
 
     [SerializeField] private Image progressBar;
 
@@ -22,8 +23,11 @@ public class StepsManager : MonoBehaviour
         
         foreach (Step step in steps)
         {
-            step.SetColor(inactiveColor);
+            step.SetBorder(InactiveColor);
+            step.SetColor(InactiveColor);
         }
+        steps[0].SetBorder(CurrentColor);
+        steps[0].SetColor(ActiveColor);
     }
 
     //Method to update the color of the steps
@@ -31,14 +35,22 @@ public class StepsManager : MonoBehaviour
     {
         for (int i = 0; i < steps.Count; i++)
         {
-            if (i < manager.NumberPairsFound)
+            Debug.Log(i == manager.NumberPairsFound);
+            if (i == manager.NumberPairsFound)
             {
-                steps[i].SetColor(activeColor);
+                steps[i].SetBorder(CurrentColor);
+                steps[i].SetColor(ActiveColor);
+            }
+            else if (i < manager.NumberPairsFound)
+            {
+                steps[i].SetBorder(ActiveColor);
+                steps[i].SetColor(ActiveColor);
                 Debug.Log("Step " + i + " is active");
             }
             else
             {
-                steps[i].SetColor(inactiveColor);
+                steps[i].SetBorder(InactiveColor);
+                steps[i].SetColor(InactiveColor);
             }
         }
         float percent = manager.NumberPairsFound / (manager.NumberPairs - 1);

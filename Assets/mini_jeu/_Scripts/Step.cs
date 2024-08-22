@@ -4,12 +4,12 @@ using UnityEngine.UI;
 
 public class Step : MonoBehaviour
 {
-    private Image _circle;
+    [SerializeField] private Image _circle;
     private Image _border;
 
     private void Awake()
     {
-        _circle = GetComponentInChildren<Image>();
+        _circle = transform.GetChild(0).GetComponent<Image>();
         _border = GetComponent<Image>();
     }
 
