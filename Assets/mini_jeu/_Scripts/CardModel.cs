@@ -25,6 +25,8 @@ public class CardModel : MonoBehaviour
 
     public Sprite frontSprite;
     public Sprite backSprite;
+    
+    public TextBulle textBulle;
 
     private void Awake()
     {
