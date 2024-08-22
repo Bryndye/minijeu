@@ -2,14 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Manager : MonoBehaviour
 {
     public static Manager Instance;
 
-    public List<CardId> CardIds = new List<CardId>();
+    [FormerlySerializedAs("CardIds")] public List<CardModel> ListCards = new List<CardModel>();
 
-    public List<CardId> CardsReturned = new List<CardId>();
+    public List<CardModel> CardsReturned = new List<CardModel>();
 
     public Action OnSameCards;
     public Action OnDifferentCards;
@@ -30,35 +31,35 @@ public class Manager : MonoBehaviour
     }
 
     #region List Cards
-    public void AddCard(CardId _cardiId)
+    public void AddCard(CardModel cardiModel)
     {
-        if (!CardIds.Contains(_cardiId))
+        if (!ListCards.Contains(cardiModel))
         {
-            CardIds.Add(_cardiId);
+            ListCards.Add(cardiModel);
         }
     }
 
-    public void RemoveCard(CardId _cardiId)
+    public void RemoveCard(CardModel cardiModel)
     {
-        if (CardIds.Contains(_cardiId))
+        if (ListCards.Contains(cardiModel))
         { 
-            CardIds.Remove(_cardiId);
+            ListCards.Remove(cardiModel);
         }
     }
     #endregion
 
-    public void ReturnCard(CardId _cardiId)
+    public void ReturnCard(CardModel cardiModel)
     {
-        if (CardsReturned.Contains(_cardiId))
+        if (CardsReturned.Contains(cardiModel))
             return;
 
-        CardsReturned.Add(_cardiId);
+        CardsReturned.Add(cardiModel);
 
         if (CardsReturned.Count >= 2)
         {
             IsUsingCards = true;
             
-            if (CardsReturned[0].Cardid == CardsReturned[1].Cardid)
+            if (CardsReturned[0].Type == CardsReturned[1].Type)
             {
                 // same cards
                 OnSameCards?.Invoke();
@@ -82,11 +83,11 @@ public class Manager : MonoBehaviour
         VictoryCondition();
     }
 
-    public void ResetCard(CardId _cardId)
+    public void ResetCard(CardModel cardModel)
     {
-        if (CardsReturned.Contains(_cardId))
+        if (CardsReturned.Contains(cardModel))
         {
-            CardsReturned.Remove(_cardId);
+            CardsReturned.Remove(cardModel);
         }
     }
 
@@ -111,7 +112,7 @@ public class Manager : MonoBehaviour
 
     public void VictoryCondition()
     {
-        if (CardIds.Count <= 0)
+        if (ListCards.Count <= 0)
         {
             // Victory
             VictoryArea.SetActive(true);

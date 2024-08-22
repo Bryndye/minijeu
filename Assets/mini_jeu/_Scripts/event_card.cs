@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent (typeof(Collider2D), typeof(CardId))]
+[RequireComponent (typeof(Collider2D), typeof(CardModel))]
 public class Event_card : MonoBehaviour
 {
     //Enum to represent the state of the card (face up or face down)
@@ -24,7 +24,7 @@ public class Event_card : MonoBehaviour
     private CardDiscovered _cardDiscovered;
     private Animator _cardAnimator;
     private Manager _manager;
-    private CardId _cardId;
+    private CardModel _cardModel;
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private SpriteRenderer _spriteCadreDiscovered;
     
@@ -34,7 +34,7 @@ public class Event_card : MonoBehaviour
         _cam = Camera.main;   
         _cardCollider = GetComponent<Collider2D>();
         _cardAnimator = GetComponent<Animator>();
-        _cardId = GetComponent<CardId>();
+        _cardModel = GetComponent<CardModel>();
         
         ChangeColor();
         SetCardState(CardState.FaceDown);
@@ -79,7 +79,7 @@ public class Event_card : MonoBehaviour
                 else
                 {
                     SetCardState(CardState.FaceDown);
-                    _manager?.ResetCard(_cardId);
+                    _manager?.ResetCard(_cardModel);
                 }
             }
         }
@@ -130,7 +130,7 @@ public class Event_card : MonoBehaviour
             case CardState.FaceUp:
                 Debug.Log("Card is face up");
                 _cardAnimator?.SetTrigger("on_click_selected");
-                _manager?.ReturnCard(_cardId);
+                _manager?.ReturnCard(_cardModel);
                 break;
             case CardState.FaceDown:
                 Debug.Log("Card is face down");
@@ -145,12 +145,12 @@ public class Event_card : MonoBehaviour
         //Depending on state of the card, change the color
         if (_cardState == CardState.FaceDown)
         {
-            _spriteRenderer.sprite = _cardId.backSprite;
+            _spriteRenderer.sprite = _cardModel.backSprite;
             _spriteRenderer.flipX = false;
         }
         else
         {
-            _spriteRenderer.sprite = _cardId.frontSprite;
+            _spriteRenderer.sprite = _cardModel.frontSprite;
             _spriteRenderer.flipX = true;
         }
     }
