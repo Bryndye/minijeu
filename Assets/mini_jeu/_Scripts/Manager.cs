@@ -9,10 +9,12 @@ public class Manager : MonoBehaviour
     public static Manager Instance;
 
     [FormerlySerializedAs("CardIds")] public List<CardModel> ListCards = new List<CardModel>();
+    public int NumberPairs;
+    public int NumberPairsFound;
 
     public List<CardModel> CardsReturned = new List<CardModel>();
 
-    public Action OnSameCards;
+    public Action<CardModel> OnSameCards;
     public Action OnDifferentCards;
 
     public bool IsUsingCards {  get; private set; }
@@ -27,7 +29,8 @@ public class Manager : MonoBehaviour
 
         OnSameCards += RemovePairCards;
         OnSameCards += DebugSameCards;
-        OnDifferentCards += DebugDiffCards;
+        OnDifferentCards += DebugDiffCards; 
+        NumberPairs = ListCards.Count / 2;
     }
 
     #region List Cards
@@ -62,13 +65,14 @@ public class Manager : MonoBehaviour
             if (CardsReturned[0].Type == CardsReturned[1].Type)
             {
                 // same cards
-                OnSameCards?.Invoke();
+                OnSameCards?.Invoke(CardsReturned[0]);
                 foreach (var item in CardsReturned)
                 {
                     item.MyEventCard.SetCardDiscovered(Event_card.CardDiscovered.Discovered);
                 }
                 IsUsingCards = false;
                 CardsReturned.Clear();
+                NumberPairsFound = NumberPairs - ListCards.Count / 2;
             }
             else
             {
@@ -101,7 +105,7 @@ public class Manager : MonoBehaviour
         IsUsingCards = false;
     }
 
-    public void RemovePairCards()
+    public void RemovePairCards(CardModel cardModel)
     {
         foreach (var _card in CardsReturned)
         {
@@ -119,7 +123,7 @@ public class Manager : MonoBehaviour
         }
     }
 
-    private void DebugSameCards()
+    private void DebugSameCards(CardModel cardModel)
     {
         Debug.Log("Same cards");
     }
