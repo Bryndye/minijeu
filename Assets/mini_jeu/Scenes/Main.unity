@@ -737,7 +737,7 @@ PrefabInstance:
     - target: {fileID: 5430319634514174797, guid: 31cacb0625bb245018e1f23f6094312a, type: 3}
       propertyPath: textBulle
       value: 
-      objectReference: {fileID: 11400000, guid: 53cb548d1fc3b4527a8a767f0871f9fc, type: 2}
+      objectReference: {fileID: 11400000, guid: deeca3cbced79443eaf707e747c96da2, type: 2}
     - target: {fileID: 5430319634514174797, guid: 31cacb0625bb245018e1f23f6094312a, type: 3}
       propertyPath: frontSprite
       value: 

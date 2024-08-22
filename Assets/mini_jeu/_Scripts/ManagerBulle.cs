@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -17,11 +14,19 @@ public class ManagerBulle : MonoBehaviour
         _bubble.SetActive(true);
         _textMeshPro.text = cardModel.textBulle.text;
     }
+    
+    public void DisplayRetry()
+    {
+        _bubble.SetActive(false);
+        _bubble.SetActive(true);
+        _textMeshPro.text = "Les cartes ne correspondent pas, veuillez réessayer";
+    }
 
     public void Start()
     {
         _bubble.SetActive(false);
         manager = Manager.Instance;
-        manager.OnSameCards += UpdateText;        
+        manager.OnSameCards += UpdateText;
+        manager.OnDifferentCards += DisplayRetry;
     }
 }
