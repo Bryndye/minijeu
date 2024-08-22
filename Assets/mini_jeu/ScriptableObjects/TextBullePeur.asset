@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30eaea0305dc43259262262c40df66ac, type: 3}
   m_Name: TextBullePeur
   m_EditorClassIdentifier: 
-  text: "Super ! Tu as trouv\xE9 la peur ! Mais ne t'inqui\xE8te pas, tu es courageux(se)
-    et rien ne peut t'effrayer !"
+  text: "Super ! Tu as trouv\xE9 la <color=#8E24AA>peur</color> ! Mais ne t'inqui\xE8te
+    pas, tu es courageux(se) et rien ne peut t'effrayer !"
   type: 3

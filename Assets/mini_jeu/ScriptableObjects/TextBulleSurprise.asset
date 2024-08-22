@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30eaea0305dc43259262262c40df66ac, type: 3}
   m_Name: TextBulleSurprise
   m_EditorClassIdentifier: 
-  text: "Wow, quelle d\xE9couverte ! Tu as trouv\xE9 la surprise ! J'esp\xE8re que
-    tu es aussi \xE9tonn\xE9(e) que moi !"
+  text: "Wow, quelle d\xE9couverte ! Tu as trouv\xE9 la <color=#D81B60>surprise</color>
+    ! J'esp\xE8re que tu es aussi \xE9tonn\xE9(e) que moi !"
   type: 4

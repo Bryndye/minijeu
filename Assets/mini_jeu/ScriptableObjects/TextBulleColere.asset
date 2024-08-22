@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30eaea0305dc43259262262c40df66ac, type: 3}
   m_Name: TextBulleColere
   m_EditorClassIdentifier: 
-  text: "F\xE9licitations ! Tu as trouv\xE9 la col\xE8re, mais tu as gard\xE9 ton
-    calme et c'est ce qui compte !"
+  text: "F\xE9licitations ! Tu as trouv\xE9 la <color=#E53935>col\xE8re</color>,
+    mais tu as gard\xE9 ton calme et c'est ce qui compte !"
   type: 0

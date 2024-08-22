@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30eaea0305dc43259262262c40df66ac, type: 3}
   m_Name: TextBulleTristesse
   m_EditorClassIdentifier: 
-  text: "Tu as trouv\xE9 la tristesse, mais ne t'inqui\xE8te pas, ta victoire met
-    du soleil dans cette journ\xE9e grise !"
+  text: "Tu as trouv\xE9 la <color=#1E88E5>tristesse</color>, mais ne t'inqui\xE8te
+    pas, ta victoire met du soleil dans cette journ\xE9e grise !"
   type: 5
