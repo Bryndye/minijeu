@@ -312,8 +312,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Victoire !
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 007c4591574d85c42b9b4aefb1b4a589, type: 2}
+  m_sharedMaterial: {fileID: -1697456217397698046, guid: 007c4591574d85c42b9b4aefb1b4a589, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
