@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30eaea0305dc43259262262c40df66ac, type: 3}
   m_Name: TextBulleDegout
   m_EditorClassIdentifier: 
-  text: Le texte du degout
+  text: "Bien jou\xE9 ! Tu as d\xE9couvert le d\xE9go\xFBt ! Heureusement, ici, tout
+    est propre et agr\xE9able !"
   type: 1

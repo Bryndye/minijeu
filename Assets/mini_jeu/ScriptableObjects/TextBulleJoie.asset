@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30eaea0305dc43259262262c40df66ac, type: 3}
   m_Name: TextBulleJoie
   m_EditorClassIdentifier: 
-  text: Le texte de la Joie
+  text: "Bravo ! Tu as trouv\xE9 la paire de la joie ! C'est un vrai bonheur de te
+    voir r\xE9ussir !"
   type: 2
