@@ -9,8 +9,8 @@ public class Manager : MonoBehaviour
     public static Manager Instance;
 
     [FormerlySerializedAs("CardIds")] public List<CardModel> ListCards = new List<CardModel>();
-    public int NumberPairs;
-    public int NumberPairsFound;
+    public float NumberPairs;
+    public float NumberPairsFound;
 
     public List<CardModel> CardsReturned = new List<CardModel>();
 
