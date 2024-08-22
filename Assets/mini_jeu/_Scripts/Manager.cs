@@ -31,6 +31,8 @@ public class Manager : MonoBehaviour
         OnSameCards += DebugSameCards;
         OnDifferentCards += DebugDiffCards; 
         NumberPairs = ListCards.Count / 2;
+
+        VictoryArea.SetActive(false);
     }
 
     #region List Cards
@@ -68,7 +70,7 @@ public class Manager : MonoBehaviour
                 OnSameCards?.Invoke(CardsReturned[0]);
                 foreach (var item in CardsReturned)
                 {
-                    item.MyEventCard.SetCardDiscovered(Event_card.CardDiscovered.Discovered);
+                    item.MyEventCard.SetCardDiscovered(EventCard.CardDiscovered.Discovered);
                 }
                 IsUsingCards = false;
                 CardsReturned.Clear();
@@ -99,7 +101,7 @@ public class Manager : MonoBehaviour
     {
         foreach (var card in CardsReturned)
         {
-            card.MyEventCard.SetCardState(Event_card.CardState.FaceDown);
+            card.MyEventCard.SetCardState(EventCard.CardState.FaceDown);
         }
         CardsReturned.Clear();
         IsUsingCards = false;
@@ -125,12 +127,12 @@ public class Manager : MonoBehaviour
 
     private void DebugSameCards(CardModel cardModel)
     {
-        Debug.Log("Same cards");
+        //Debug.Log("Same cards");
     }
 
     private void DebugDiffCards()
     {
-        Debug.Log("Different cards");
+        //Debug.Log("Different cards");
 
     }
 }

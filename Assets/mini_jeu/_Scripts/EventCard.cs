@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent (typeof(Collider2D), typeof(CardModel))]
-public class Event_card : MonoBehaviour
+public class EventCard : MonoBehaviour
 {
     //Enum to represent the state of the card (face up or face down)
     public enum CardState

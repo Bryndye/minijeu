@@ -20,15 +20,15 @@ public class CardModel : MonoBehaviour
     [SerializeField] private CardType _cardType;
     public CardType Type { get { return _cardType; } }
 
-    private Event_card myEventCard;
-    public Event_card MyEventCard { get { return myEventCard; } }
+    private EventCard myEventCard;
+    public EventCard MyEventCard { get { return myEventCard; } }
 
     public Sprite frontSprite;
     public Sprite backSprite;
 
     private void Awake()
     {
-        myEventCard = GetComponent<Event_card>();
+        myEventCard = GetComponent<EventCard>();
     }
 
 }

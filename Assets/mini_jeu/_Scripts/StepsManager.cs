@@ -8,7 +8,7 @@ public class StepsManager : MonoBehaviour
     public List<Step> steps = new List<Step>();
     public Color activeColor = Color.green;  // Color when step is active
     public Color inactiveColor = Color.gray;  // Color when step is inactive
-    public Manager manager;
+    private Manager manager;
     
     // Start is called before the first frame update
     void Start()
