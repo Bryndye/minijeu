@@ -747,6 +747,7 @@ MonoBehaviour:
   - {fileID: 5409716250322258071}
   activeColor: {r: 0, g: 1, b: 0, a: 1}
   inactiveColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  progressBar: {fileID: 3040121269857583159}
 --- !u!1 &5184409639614235270
 GameObject:
   m_ObjectHideFlags: 0
@@ -1236,12 +1237,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: c4fcff4876a368546a4b72943354ad0e, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0.879
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0

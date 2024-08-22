@@ -2,14 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StepsManager : MonoBehaviour
 {
+    private Manager manager;
+    
     public List<Step> steps = new List<Step>();
     public Color activeColor = Color.green;  // Color when step is active
     public Color inactiveColor = Color.gray;  // Color when step is inactive
-    private Manager manager;
-    
+
+    [SerializeField] private Image progressBar;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +31,7 @@ public class StepsManager : MonoBehaviour
     {
         for (int i = 0; i < steps.Count; i++)
         {
-            if (i <= manager.NumberPairsFound)
+            if (i < manager.NumberPairsFound)
             {
                 steps[i].SetColor(activeColor);
                 Debug.Log("Step " + i + " is active");
@@ -37,6 +41,8 @@ public class StepsManager : MonoBehaviour
                 steps[i].SetColor(inactiveColor);
             }
         }
+        float percent = manager.NumberPairsFound / (manager.NumberPairs - 1);
+        progressBar.fillAmount = percent;
     }
     
 }

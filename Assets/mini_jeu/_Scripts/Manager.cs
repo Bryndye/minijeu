@@ -11,6 +11,7 @@ public class Manager : MonoBehaviour
     [FormerlySerializedAs("CardIds")] public List<CardModel> ListCards = new List<CardModel>();
     public float NumberPairs;
     public float NumberPairsFound;
+    public float PercentPairs;
 
     public List<CardModel> CardsReturned = new List<CardModel>();
 
@@ -26,10 +27,6 @@ public class Manager : MonoBehaviour
         // Init Singleton
         Instance = this;
 
-
-        OnSameCards += RemovePairCards;
-        OnSameCards += DebugSameCards;
-        OnDifferentCards += DebugDiffCards; 
         NumberPairs = ListCards.Count / 2;
 
         VictoryArea.SetActive(false);
@@ -67,14 +64,22 @@ public class Manager : MonoBehaviour
             if (CardsReturned[0].Type == CardsReturned[1].Type)
             {
                 // same cards
+                foreach (var _card in CardsReturned)
+                {
+                    RemoveCard(_card);
+                }
+
+                NumberPairsFound = NumberPairs - ListCards.Count / 2;
+                PercentPairs = NumberPairsFound / NumberPairs;
+
                 OnSameCards?.Invoke(CardsReturned[0]);
+
                 foreach (var item in CardsReturned)
                 {
                     item.MyEventCard.SetCardDiscovered(EventCard.CardDiscovered.Discovered);
                 }
                 IsUsingCards = false;
                 CardsReturned.Clear();
-                NumberPairsFound = NumberPairs - ListCards.Count / 2;
             }
             else
             {
@@ -123,16 +128,5 @@ public class Manager : MonoBehaviour
             // Victory
             VictoryArea.SetActive(true);
         }
-    }
-
-    private void DebugSameCards(CardModel cardModel)
-    {
-        //Debug.Log("Same cards");
-    }
-
-    private void DebugDiffCards()
-    {
-        //Debug.Log("Different cards");
-
     }
 }

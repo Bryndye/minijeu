@@ -92,7 +92,7 @@ public class EventCard : MonoBehaviour
 
         if (_cardCollider.OverlapPoint(mousePosition))
         {
-            Debug.Log("Mouse is over the card");
+            //Debug.Log("Mouse is over the card");
         }
     }
     
@@ -112,11 +112,11 @@ public class EventCard : MonoBehaviour
         switch (discovered)
         {
             case CardDiscovered.Discovered:
-                Debug.Log("Card is discovered");
+                //Debug.Log("Card is discovered");
                 _spriteCadreDiscovered.enabled = true;
                 break;
             case CardDiscovered.NotDiscovered:
-                Debug.Log("Card is not discovered");
+                //Debug.Log("Card is not discovered");
                 _spriteCadreDiscovered.enabled = false;
                 break;
         }
@@ -128,12 +128,12 @@ public class EventCard : MonoBehaviour
         switch (_cardState)
         {
             case CardState.FaceUp:
-                Debug.Log("Card is face up");
+                //Debug.Log("Card is face up");
                 _cardAnimator?.SetTrigger("on_click_selected");
                 _manager?.ReturnCard(_cardModel);
                 break;
             case CardState.FaceDown:
-                Debug.Log("Card is face down");
+                //Debug.Log("Card is face down");
                 _cardAnimator?.SetTrigger("on_click_unselected");
                 break;
         }
