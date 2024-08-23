@@ -19,7 +19,7 @@ public class ManagerBulle : MonoBehaviour
     {
         _bubble.SetActive(false);
         _bubble.SetActive(true);
-        _textMeshPro.text = "Les cartes ne correspondent pas, veuillez réessayer";
+        _textMeshPro.text = "Zut, ce n'est pas encore ça ! Allez, essaye encore !";
     }
 
     public void Start()
