@@ -125,8 +125,13 @@ public class Manager : MonoBehaviour
     {
         if (ListCards.Count <= 0)
         {
-            // Victory
-            VictoryArea.SetActive(true);
+            //Wait 2 seconds
+            Invoke(nameof(WaitForVictory), 2f);
         }
+    }
+
+    private void WaitForVictory()
+    {
+        VictoryArea.SetActive(true);
     }
 }
